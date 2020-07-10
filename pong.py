@@ -15,22 +15,22 @@ score_a = 0
 score_b = 0
 
 # Paddle A
-paddle_a = turtle.Turtle()
-paddle_a.speed(0)
-paddle_a.shape("square")
-paddle_a.color("white")
-paddle_a.shapesize(stretch_wid=5, stretch_len=1)
-paddle_a.penup()
-paddle_a.goto(-350, 0)
+paddle_left = turtle.Turtle()
+paddle_left.speed(0)
+paddle_left.shape("square")
+paddle_left.color("white")
+paddle_left.shapesize(stretch_wid=5, stretch_len=1)
+paddle_left.penup()
+paddle_left.goto(-350, 0)
 
 # Paddle B
-paddle_b = turtle.Turtle()
-paddle_b.speed(0)
-paddle_b.shape("square")
-paddle_b.color("white")
-paddle_b.shapesize(stretch_wid=5, stretch_len=1)
-paddle_b.penup()
-paddle_b.goto(350, 0)
+paddle_right = turtle.Turtle()
+paddle_right.speed(0)
+paddle_right.shape("square")
+paddle_right.color("white")
+paddle_right.shapesize(stretch_wid=5, stretch_len=1)
+paddle_right.penup()
+paddle_right.goto(350, 0)
 
 # Ball
 ball = turtle.Turtle()
@@ -66,36 +66,36 @@ title.write("PONG BY CURIOUSEXPERT24", align="center",
 # Functions
 
 
-def paddle_a_up():
-    y = paddle_a.ycor()
+def paddle_left_up():
+    y = paddle_left.ycor()
     y += 20
-    paddle_a.sety(y)
+    paddle_left.sety(y)
 
 
-def paddle_a_down():
-    y = paddle_a.ycor()
+def paddle_left_down():
+    y = paddle_left.ycor()
     y -= 20
-    paddle_a.sety(y)
+    paddle_left.sety(y)
 
 
-def paddle_b_up():
-    y = paddle_b.ycor()
+def paddle_right_up():
+    y = paddle_right.ycor()
     y += 20
-    paddle_b.sety(y)
+    paddle_right.sety(y)
 
 
-def paddle_b_down():
-    y = paddle_b.ycor()
+def paddle_right_down():
+    y = paddle_right.ycor()
     y -= 20
-    paddle_b.sety(y)
+    paddle_right.sety(y)
 
 
 # Keyboard bindings
 wn.listen()
-wn.onkeypress(paddle_a_up, "w")
-wn.onkeypress(paddle_a_down, "s")
-wn.onkeypress(paddle_b_up, "Up")
-wn.onkeypress(paddle_b_down, "Down")
+wn.onkeypress(paddle_left_up, "w")
+wn.onkeypress(paddle_left_down, "s")
+wn.onkeypress(paddle_right_up, "Up")
+wn.onkeypress(paddle_right_down, "Down")
 
 # Main game loop
 while True:
@@ -134,8 +134,8 @@ while True:
         ball.dx *= -1
 
     # Paddle and ball collisions
-    if ball.xcor() < -340 and ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50:
+    if ball.xcor() < -340 and ball.ycor() < paddle_left.ycor() + 50 and ball.ycor() > paddle_left.ycor() - 50:
         ball.dx *= -1
 
-    elif ball.xcor() > 340 and ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50:
+    elif ball.xcor() > 340 and ball.ycor() < paddle_right.ycor() + 50 and ball.ycor() > paddle_right.ycor() - 50:
         ball.dx *= -1
